@@ -3,6 +3,7 @@ clone_url=$1
 target_branch=$2
 origin_branch=$3
 default_branch=$4
+remove_git=$5
 
 #################################################################################################
 # 
@@ -53,6 +54,8 @@ else
   else
     /bin/echo -e "\e[1;35m<$origin_branch> branch does not exist in <$name> repository, no merge will be performed on this repository.\e[0m"
   fi
-  rm -rf .git
+  if [ ! -z $remove_git ]; then
+    rm -rf .git
+  fi
   cd ..
 fi
